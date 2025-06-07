@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "629755999816",
+    "project_id": "insta-clone-slobo",
+    "storage_bucket": "insta-clone-slobo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629755999816:android:38d7b2bcdb816653814a7d",
+        "android_client_info": {
+          "package_name": "se.lobo.insta_clone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGUlHn1L-fbu19PS40yLwJgBQzK8mbRqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
