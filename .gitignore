@@ -45,7 +45,9 @@ app.*.map.json
 /android/app/release
 
 # Confidential
-lib/firebase_options.dart
+/lib/firebase_options.dart
+/android/app/src/main/AndroidManifest.xml
+/android/app/google-services.json
 
 # Tools
 git-filter-repo
