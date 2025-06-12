@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:insta_clone/state/auth/backend/authenticator.dart';
+import 'package:insta_clone/state/auth/models/auth_result.dart';
 import 'package:insta_clone/state/auth/providers/auth_state_provider.dart';
 import 'package:insta_clone/state/auth/providers/is_logged_in_provider.dart';
 import 'firebase_options.dart';
@@ -35,6 +36,7 @@ class App extends StatelessWidget {
       home: Consumer(
         builder: (context, ref, child) {
           final isLoggedIn = ref.watch(isLoggedInProvider);
+          isLoggedIn.log();
           if (isLoggedIn) {
             return const MainView();
           } else {
@@ -68,27 +70,23 @@ class MainView extends StatelessWidget {
   }
 }
 
-class LoginView extends StatelessWidget {
+class LoginView extends ConsumerWidget {
   const LoginView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(title: const Text("Login View")),
       body: Column(
         children: [
           TextButton(
-            onPressed: () async {
-              final result = await Autenticator().loginWithGoogle();
-              result.log();
-            },
+            onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
+
             child: const Text('Sign in with Google'),
           ),
           TextButton(
-            onPressed: () async {
-              final result = await Autenticator().loginWithFacebook();
-              result.log();
-            },
+            onPressed: ref.read(authStateProvider.notifier).loginWithFacebook,
+
             child: const Text('Sign in with Facebook'),
           ),
         ],
