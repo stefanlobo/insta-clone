@@ -5,6 +5,7 @@ import 'package:insta_clone/state/auth/backend/authenticator.dart';
 import 'package:insta_clone/state/auth/models/auth_result.dart';
 import 'package:insta_clone/state/auth/providers/auth_state_provider.dart';
 import 'package:insta_clone/state/auth/providers/is_logged_in_provider.dart';
+import 'package:insta_clone/views/components/loading/loading_screen.dart';
 import 'firebase_options.dart';
 
 import 'dart:developer' as devtools show log;
@@ -60,6 +61,7 @@ class MainView extends StatelessWidget {
         builder: (context, ref, child) {
           return TextButton(
             onPressed: () async {
+              //LoadingScreen.instance().show(context: context, text: "Hello World"); // shows how the loading screen works. change the context in the builder to _ to use the correct context that is one above
               ref.read(authStateProvider.notifier).logOut();
             },
             child: Text('Logout'),
