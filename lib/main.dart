@@ -8,6 +8,7 @@ import 'package:insta_clone/state/auth/providers/is_logged_in_provider.dart';
 import 'package:insta_clone/state/providers/is_loading_provider.dart';
 import 'package:insta_clone/views/components/loading/loading_screen.dart';
 import 'package:insta_clone/views/login/login_view.dart';
+import 'package:insta_clone/views/main/main_view.dart';
 import 'firebase_options.dart';
 
 import 'dart:developer' as devtools show log;
@@ -33,7 +34,10 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
         indicatorColor: Colors.blueGrey,
       ),
-      theme: ThemeData(brightness: Brightness.light, primarySwatch: Colors.blue),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.blue,
+      ),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       home: Consumer(
@@ -53,29 +57,6 @@ class App extends StatelessWidget {
           } else {
             return const LoginView();
           }
-        },
-      ),
-    );
-  }
-}
-
-// for when you are already logged in
-class MainView extends StatelessWidget {
-  const MainView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Main View')),
-      body: Consumer(
-        builder: (context, ref, child) {
-          return TextButton(
-            onPressed: () async {
-              //LoadingScreen.instance().show(context: context, text: "Hello World"); // shows how the loading screen works. change the context in the builder to _ to use the correct context that is one above
-              ref.read(authStateProvider.notifier).logOut();
-            },
-            child: Text('Logout'),
-          );
         },
       ),
     );
